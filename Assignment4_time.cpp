@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include "mpi.h"
-#include <chrono>
 
-using namespace std::chrono;
 using namespace std;
 
 int main(int argc, char* argv[]) {
@@ -30,6 +28,7 @@ int main(int argc, char* argv[]) {
 			cout << "From process " << message[0] << " received message " << message[1] << endl;
 			all_results[i-1] = message[1];
 		}
+		cout<<"The sequence is: "<<all_results[0]<<", "<<all_results[1]<<", "<<all_results[2]<<endl;
 		if (all_results[0] > all_results[1] && all_results[1] > all_results[2]) cout<<"Sequence received is stricly descending"<<endl;
 		else cout<<"Sequence received is NOT strictly descending"<<endl;
 		time_finish = MPI_Wtime();
